@@ -95,19 +95,19 @@ function Countdown () {
 }
 function Green () {
     range = strip.range(0, 1)
-    range.showColor(neopixel.colors(NeoPixelColors.Black))
+    range.showColor(neopixel.colors(NeoPixelColors.Green))
     range = strip.range(1, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = strip.range(2, 1)
-    range.showColor(neopixel.colors(NeoPixelColors.Green))
+    range.showColor(neopixel.colors(NeoPixelColors.Black))
 }
 function Red () {
     range = strip.range(0, 1)
-    range.showColor(neopixel.colors(NeoPixelColors.Red))
+    range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = strip.range(1, 1)
     range.showColor(neopixel.colors(NeoPixelColors.Black))
     range = strip.range(2, 1)
-    range.showColor(neopixel.colors(NeoPixelColors.Black))
+    range.showColor(neopixel.colors(NeoPixelColors.Red))
 }
 let distance = 0
 let range: neopixel.Strip = null
@@ -116,6 +116,17 @@ let strip: neopixel.Strip = null
 basic.showIcon(IconNames.Happy)
 strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 strip.setBrightness(50)
+basic.forever(function () {
+    if (mode == 1) {
+        GYRN()
+        mode += 0
+    } else if (mode == 2) {
+        GYRS()
+        mode += 0
+    } else {
+    	
+    }
+})
 basic.forever(function () {
     pins.digitalWritePin(DigitalPin.P1, 0)
     control.waitMicros(2)
@@ -126,15 +137,7 @@ basic.forever(function () {
     basic.pause(2000)
 })
 basic.forever(function () {
-    if (mode == 1) {
-        GYRN()
-        mode += 0
-    } else if (mode == 2) {
+    if (distance <= 5) {
         GYRS()
-        mode += 0
-    } else if (0 == 0) {
-    	
-    } else {
-    	
     }
 })
